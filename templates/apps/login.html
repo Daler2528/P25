@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-btn, .register-btn, .reset-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .register-btn {
+            background-color: #008CBA;  /* Registratsiya tugmasi ko'k rang */
+        }
+
+        .register-btn:hover {
+            background-color: #007bb5;
+        }
+
+        .reset-btn {
+            background-color: #f44336;  /* Parolni tiklash tugmasi qizil rang */
+        }
+
+        .reset-btn:hover {
+            background-color: #e73d31;
+        }
+
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+
+        .extra-links {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .extra-links a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .extra-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+        {% csrf_token %}
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+    <!-- Ro'yxatdan o'tish va parolni tiklash tugmalari -->
+    <button onclick="window.location.href='{% url 'register' %}';" class="register-btn">Ro'yxatdan o'tish</button>
+    <button onclick="window.location.href='/reset-password';" class="reset-btn">Parolni tiklash</button>
+
+    <div class="extra-links">
+        <a href="/register">Ro'yxatdan o'tish</a> | 
+        <a href="/reset-password">Parolni tiklash</a>
+    </div>
+</div>
+</body>
+</html>
