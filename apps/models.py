@@ -11,6 +11,7 @@ class User(AbstractUser):
     phone = CharField(max_length=12)
     mobile = CharField(max_length=12)
     address = CharField(max_length=255)
+    added_on = models.DateTimeField(auto_now_add=True )
     job = CharField(max_length=255 , choices=JobChoicesField , default=JobChoicesField.FULL_STACK_DEVELOPEE)
 
 
